@@ -37,7 +37,6 @@ public class Tree : MonoBehaviour
         if (collision.CompareTag("P_Axe") && !isCut)
             {
             OnHit();
-            Debug.Log("P_Hit_Tree");
             }
     }
 }
