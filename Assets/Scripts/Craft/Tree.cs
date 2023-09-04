@@ -9,10 +9,12 @@ public class Tree : MonoBehaviour
 
     [SerializeField] private GameObject dropsPrefab;
     [SerializeField] private int totalDrops;
+    [SerializeField] private ParticleSystem leafParticle;
     public void OnHit()
     {
         treeHealth--;
         animator.SetTrigger("isHit");
+        leafParticle.Play();
         if (treeHealth <= 0) 
         {
             //Create and init log drops
