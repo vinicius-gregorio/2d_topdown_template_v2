@@ -10,6 +10,9 @@ public class Tree : MonoBehaviour
     [SerializeField] private GameObject dropsPrefab;
     [SerializeField] private int totalDrops;
     [SerializeField] private ParticleSystem leafParticle;
+
+    private bool isCut;
+
     public void OnHit()
     {
         treeHealth--;
@@ -24,14 +27,14 @@ public class Tree : MonoBehaviour
                 animator.SetTrigger("cut");
                 Instantiate(dropsPrefab, transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f), transform.rotation);
             }
-           
 
+            isCut = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("P_Axe"))
+        if (collision.CompareTag("P_Axe") && !isCut)
             {
             OnHit();
             Debug.Log("P_Hit_Tree");
