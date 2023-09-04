@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9678acfd177afa4ebda225c49983a8c, type: 3}
+  m_Name: NPC_1
+  m_EditorClassIdentifier: 
+  actor: {fileID: 2577135092697733095, guid: 9bca05abdf884864fa8126d6a6e8e5bd, type: 3}
+  speakerSprite: {fileID: 0}
+  sentence: 
+  dialogs:
+  - actorName: Molier
+    profile: {fileID: -837997422, guid: 4acd442fd6a87a7488d95d62d8b41ba5, type: 3}
+    sentence:
+      portuguese: Ola Chefe. Tudo bem contigo?
+      english: Hii
+      spanish: Hola
+  - actorName: Hero
+    profile: {fileID: 21300000, guid: 2bd47d258428b3c40b6532459f609e04, type: 3}
+    sentence:
+      portuguese: Dubom?
+      english: Fine?
+      spanish: Dubom? spanish

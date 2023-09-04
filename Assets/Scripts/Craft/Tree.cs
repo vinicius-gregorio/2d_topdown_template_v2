@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Tree : MonoBehaviour
+{
+    [SerializeField] private float treeHealth;
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private GameObject dropsPrefab;
+    [SerializeField] private int totalDrops;
+    public void OnHit()
+    {
+        treeHealth--;
+        animator.SetTrigger("isHit");
+        if (treeHealth <= 0) 
+        {
+            //Create and init log drops
+
+            for (int i = 0; i < totalDrops; i++)
+            {
+                animator.SetTrigger("cut");
+                Instantiate(dropsPrefab, transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f), transform.rotation);
+            }
+           
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("P_Axe"))
+            {
+            OnHit();
+            Debug.Log("P_Hit_Tree");
+            }
+    }
+}
