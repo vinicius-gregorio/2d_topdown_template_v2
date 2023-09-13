@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerItems : MonoBehaviour
 {
     [SerializeField] private int totalWoodCount;
+    public float currentWater;
+    private float waterLimit = 50f;
 
     public int TotalWoodCount { get => totalWoodCount; set => totalWoodCount = value; }
-
-    void Start()
+  
+    public void AddWater(float water)
     {
-        
-    }
+        if(currentWater < waterLimit)
+        {
+            currentWater += water;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

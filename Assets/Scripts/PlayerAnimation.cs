@@ -25,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (player.direction.sqrMagnitude > 0)
         {
-            if (player.isRolling)
+            if (player.IsRolling)
             {
                 animation.SetTrigger("isRoll");
 
@@ -52,6 +52,8 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         OnCut();
+        OnDig();
+        OnWattering();
     }
 
     void OnRun()
@@ -71,6 +73,19 @@ public class PlayerAnimation : MonoBehaviour
         if(player.IsCutting)
         {
             animation.SetInteger("transition", 2);
+        }
+    }
+    void OnDig()
+    {
+        if(player.IsDigging)
+        {
+            animation.SetInteger("transition", 4);
+        }
+    }  void OnWattering()
+    {
+        if(player.IsWatering)
+        {
+            animation.SetInteger("transition", 5);
         }
     }
     #endregion
