@@ -16,7 +16,6 @@ public class Water : MonoBehaviour
     {
         if (detectPlayer && Input.GetKeyDown(KeyCode.E))
         {
-                Debug.Log("Detected");
             playerItems.AddWater(waterValue);
         }
     }
@@ -26,6 +25,8 @@ public class Water : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             detectPlayer = true;
+            Debug.Log("Detected enter");
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,6 +34,8 @@ public class Water : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             detectPlayer = false;
+            Debug.Log("Detected exit");
+
         }
     }
 }

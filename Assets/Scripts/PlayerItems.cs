@@ -14,6 +14,7 @@ public class PlayerItems : MonoBehaviour
     {
         if(currentWater < waterLimit)
         {
+            Debug.Log("Add Watter");
             currentWater += water;
 
         }
