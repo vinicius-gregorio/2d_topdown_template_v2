@@ -6,6 +6,7 @@ TagManager:
   tags:
   - P_Axe
   - I_Wood
+  - P_Dig
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class Water : MonoBehaviour
     {
         if (detectPlayer && Input.GetKeyDown(KeyCode.E))
         {
+                Debug.Log("Detected");
             playerItems.AddWater(waterValue);
         }
     }
