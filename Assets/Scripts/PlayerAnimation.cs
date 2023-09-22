@@ -102,5 +102,16 @@ public class PlayerAnimation : MonoBehaviour
         player.isStopped = false;
 
     }
+
+    public void OnHammeringStarted()
+    {
+        animation.SetBool("isHammering", true);
+
+    }
+    public void OnHammeringEnded()
+    {
+        animation.SetBool("isHammering", false);
+
+    }
     #endregion
 }
