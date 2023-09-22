@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public bool isRunning { get => _isRunning; set => _isRunning = value; }
     public Vector2 direction { get => _direction; set => _direction = value; }
     public bool IsWatering { get => _isWatering; set => _isWatering = value; }
+    public int HandlingObj { get => handlingObj; set => handlingObj = value; }
 
     void Start()
     {
@@ -100,7 +101,7 @@ public class Player : MonoBehaviour
 
     void OnAction()
     {
-        switch (handlingObj)
+        switch (HandlingObj)
         {
             case 1:
                 OnCutting();
@@ -171,14 +172,14 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            handlingObj = 1;
+            HandlingObj = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            handlingObj = 2;
+            HandlingObj = 2;
         }  if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            handlingObj = 3;
+            HandlingObj = 3;
         }
     }
 }
