@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private bool detectPlayer;
     [SerializeField] private int waterValue;
     private PlayerItems playerItems;
+
+
     void Start()
     {
         playerItems = FindObjectOfType<PlayerItems>();
