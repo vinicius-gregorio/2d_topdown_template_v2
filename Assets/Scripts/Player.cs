@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float runSpeed;
+    public bool isStopped;
     private float initialSpeed;
     private float speedMultiplier;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     private Vector2 _direction;
     private int handlingObj;
     private PlayerItems playerItems;
+
    
 
     public bool IsCutting { get => _isCutting; set => _isCutting = value; }
@@ -40,15 +42,21 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        HandleTool();
-        OnInput();
-        OnRun();
-        OnRoll();
-        OnAction();
+        if (!isStopped)
+        {
+            HandleTool();
+            OnInput();
+            OnRun();
+            OnRoll();
+            OnAction();
+        }
     }
     void FixedUpdate()
     {
-       OnMove();
+        if (!isStopped)
+        {
+            OnMove();
+        }
     }
 
 

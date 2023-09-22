@@ -6,11 +6,12 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Player player;
     private Animator animation;
-
+    private Casting casting;
     void Start()
     {
         player = GetComponent<Player>();
         animation = GetComponent<Animator>();
+        casting = FindObjectOfType<Casting>();
     }
 
     void Update()
@@ -87,6 +88,19 @@ public class PlayerAnimation : MonoBehaviour
         {
             animation.SetInteger("transition", 5);
         }
+    }
+
+
+    public void OnCastingStart()
+    {
+        animation.SetTrigger("isCasting");
+        player.isStopped = true;
+    }
+    public void OnCastingEnded()
+    {
+        casting.OnCasting();
+        player.isStopped = false;
+
     }
     #endregion
 }
