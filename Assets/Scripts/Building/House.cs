@@ -5,17 +5,23 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField] private GameObject colliderz;
+   
+    [SerializeField] private SpriteRenderer houseSprite;
+    [SerializeField] private Transform pointToMove;
+
+    [Header("Misc")]
+    [SerializeField] private int woodAmount;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
     [SerializeField] private float timeToBuild;
-    [SerializeField] private SpriteRenderer houseSprite;
-    [SerializeField] private Transform pointToMove;
 
     private float timeCount;
     private bool isStartBuilding;
     private bool detectPlayer;
     private Player player;
     private PlayerAnimation playerAnimation;
+    private PlayerItems playerItems;
 
 
 
@@ -23,13 +29,14 @@ public class House : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         playerAnimation = player.GetComponent<PlayerAnimation>();
-
+        playerItems = player.GetComponent<PlayerItems>();
     }
 
     void Update()
     {
-        if (detectPlayer && Input.GetKeyDown(KeyCode.E))
+        if (detectPlayer && Input.GetKeyDown(KeyCode.E) &&  playerItems.TotalWoodCount >= woodAmount)
         {
+            //start crafting
             isStartBuilding = true;
             playerAnimation.OnHammeringStarted();
             houseSprite.color = startColor;
@@ -45,6 +52,8 @@ public class House : MonoBehaviour
                 playerAnimation.OnHammeringEnded();
                 houseSprite.color = endColor;
                 player.isStopped = false;
+                colliderz.SetActive(true);
+                playerItems.TotalWoodCount -= woodAmount;
             }
         }
     }
