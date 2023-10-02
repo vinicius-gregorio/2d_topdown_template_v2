@@ -7,6 +7,10 @@ public class PlayerAnimation : MonoBehaviour
     private Player player;
     private Animator animation;
     private Casting casting;
+
+    private bool isHitting;
+    private float timeCount;
+    private float recoveryTime = 1f;
     void Start()
     {
         player = GetComponent<Player>();
@@ -18,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour
     {
        OnMove();
        OnRun();
+       HandleRecoveryTime();
     }
 
 
@@ -114,4 +119,26 @@ public class PlayerAnimation : MonoBehaviour
 
     }
     #endregion
+
+    private void HandleRecoveryTime()
+    {
+        if (isHitting)
+        {
+            timeCount += Time.deltaTime;
+            if (timeCount >= recoveryTime)
+            {
+                isHitting = false;
+                timeCount = 0f;
+            }
+        }
+    }
+    public void OnHit()
+    {
+        if(!isHitting)
+        {
+            animation.SetTrigger("isHurt");
+            isHitting = true;
+        }
+        
+    }
 }

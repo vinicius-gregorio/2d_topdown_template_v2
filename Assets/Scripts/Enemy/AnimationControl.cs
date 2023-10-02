@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AnimationControl : MonoBehaviour
 {
-    private Animator animator;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask playerLayer;
 
+    private Animator animator;
+    private PlayerAnimation PLAnimation;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        PLAnimation = FindObjectOfType<PlayerAnimation>();
     }
 
     public void PlayAnimation(int animationValue)
@@ -28,6 +30,7 @@ public class AnimationControl : MonoBehaviour
         {
             //detect player collision
             Debug.Log("player hit");
+            PLAnimation.OnHit();
         }
         else
         {
