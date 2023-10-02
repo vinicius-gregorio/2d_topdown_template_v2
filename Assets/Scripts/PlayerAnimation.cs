@@ -155,12 +155,9 @@ public class PlayerAnimation : MonoBehaviour
         if (hit != null)
         {
             Debug.Log("player hiters");
+            hit.GetComponentInChildren<AnimationControl>().OnHit();   
         }
-        else
-        {
-            
-
-        }
+        
     }
     private void OnDrawGizmosSelected()
     {

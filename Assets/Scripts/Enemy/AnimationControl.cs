@@ -10,11 +10,13 @@ public class AnimationControl : MonoBehaviour
 
     private Animator animator;
     private PlayerAnimation PLAnimation;
+    private Skeleton skeleton;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         PLAnimation = FindObjectOfType<PlayerAnimation>();
+        skeleton = GetComponentInParent<Skeleton>();
     }
 
     public void PlayAnimation(int animationValue)
@@ -25,16 +27,33 @@ public class AnimationControl : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
-        if (hit != null)
+        if (!skeleton.isDead)
         {
-            //detect player collision
-            Debug.Log("player hit");
-            PLAnimation.OnHit();
+            Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
+            if (hit != null)
+            {
+                //detect player collision
+                Debug.Log("player hit");
+                PLAnimation.OnHit();
+            }
+        }
+       
+    }
+    public void OnHit()
+    {
+     
+
+        if (skeleton.currentHealth <=0)
+        {
+            skeleton.isDead = true;
+            animator.SetTrigger("death");
+            Destroy(skeleton.gameObject, 2f);
         }
         else
         {
-
+            animator.SetTrigger("hit");
+            skeleton.currentHealth--;
+            skeleton.healthBar.fillAmount = skeleton.currentHealth / skeleton.maxHealth;
         }
     }
 
